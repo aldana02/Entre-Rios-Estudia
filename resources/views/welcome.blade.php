@@ -55,7 +55,7 @@
             color: white;
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 1rem;
+            padding: 0.9rem 1rem;
             border-radius: 5px;
             transition: all 0.3s ease;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -67,12 +67,13 @@
             transform: translateY(-2px);
         }
 
-        .auth-buttons {
+         .auth-buttons {
             display: flex;
             gap: 1rem;
         }
-.btn-login, .btn-register {
-            padding: 0.4rem 1rem;
+
+        .btn-login, .btn-register {
+            padding: 0.2rem 1rem;
             border: none;
             border-radius: 6px;
             text-decoration: none;
@@ -332,8 +333,8 @@
     <!-- Header con menú -->
     <header class="header">
         <nav class="navbar">
-            <a href="/public/images/logoER.png" class="logo"></a>
-            
+             <!-- <img src="{{ asset('images/logoER.png') }}" alt="Logo" class="h-12 w-12 rounded-full object-cover mr-4 shadow">
+             -->
             <ul class="nav-menu">
                 <li><a href="/" class="active">Inicio</a></li>
                 <li><a href="/informacion">Información</a></li>
@@ -341,7 +342,7 @@
                 <li><a href="/recursos">Recursos</a></li>
                 <li><a href="/contacto">Contacto</a></li>
             </ul>
-
+            
             <div class="auth-buttons">
                 <a href="/login" class="btn-login">Iniciar Sesión</a>
                 <a href="/register" class="btn-register">Registrarse</a>
@@ -396,7 +397,6 @@
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Plataforma Educativa de Entre Ríos</p>
-        <p>Gobierno de Entre Ríos - Consejo General de Educación</p>
     </footer>
 
     <script>
