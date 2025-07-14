@@ -22,10 +22,11 @@
         /* Header con fondo de bandera de Entre Ríos */
         .header {
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                        url('public/images/bandera-entre-rios.jpg') center/cover;
+                        url('{{ asset('images/bandera2.jpg') }}') center/cover;
             color: white;
             padding: 1rem 0;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .navbar {
@@ -35,6 +36,29 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 2rem;
+        }
+
+        /* Logo container */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
         .logo {
@@ -277,6 +301,20 @@
                 padding: 1rem;
             }
 
+            .logo-container {
+                order: -1;
+                margin-bottom: 1rem;
+            }
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
             .nav-menu {
                 flex-direction: column;
                 gap: 0.5rem;
@@ -333,8 +371,10 @@
     <!-- Header con menú -->
     <header class="header">
         <nav class="navbar">
-             <!-- <img src="{{ asset('images/logoER.png') }}" alt="Logo" class="h-12 w-12 rounded-full object-cover mr-4 shadow">
-             -->
+            <div class="logo-container">
+                <img src="{{ asset('images/logoER.png') }}" alt="Logo Entre Ríos" class="logo-img"><br>
+            </div>
+            
             <ul class="nav-menu">
                 <li><a href="/" class="active">Inicio</a></li>
                 <li><a href="/informacion">Información</a></li>
