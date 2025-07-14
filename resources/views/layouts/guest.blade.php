@@ -1,3 +1,4 @@
+@extends('layouts.app')
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,7 +28,7 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             width: 100%;
-            max-width: 900px;
+            max-width: 1500px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             min-height: 600px;
