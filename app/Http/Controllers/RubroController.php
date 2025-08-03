@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Curso;
-class CursoController extends Controller
+use App\Models\Rubro;
+
+class RubroController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $cursos = Curso::latest()->get();
-        return view('cursos.index', compact('cursos'));
+        $rubros = Rubro::all();
+        return view('rubros.index', compact('rubros'));
     }
 
     /**

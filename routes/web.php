@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\InstitucionController;
-
+use App\Http\Controllers\RubroController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,4 +31,6 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/cursos', [CursoController::class, 'index'])->name('cursos.index');
 Route::get('/instituciones', [InstitucionController::class, 'index'])->name('instituciones.index');
+Route::get('/rubros', [RubroController::class, 'index'])->name('rubros.index');
+Route::view('/contacto', 'contacto')->name('contacto');
 require __DIR__.'/auth.php';

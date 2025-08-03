@@ -3,30 +3,37 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\Curso as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class Curso extends Authenticatable
+class Curso extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
-    public function tipoInstitucion()
+    use HasFactory;
+
+    protected $fillable = [
+        'nombre',
+        'descripcion',
+        'modalidad',
+        'duracion',
+        'costo',
+        'fecha_inicio',
+        'fecha_fin',
+        'institucion_id',
+        'rubro_id',
+        'nivel_id',
+    ];
+
+    public function institucion()
     {
-        return $this->belongsTo(TipoInstitucion::class, 'idtipo_institucion');
+        return $this->belongsTo(Institucion::class);
     }
 
     public function rubro()
     {
-        return $this->belongsTo(Rubro::class, 'idrubro');
-    }
-
-    public function subrubro()
-    {
-        return $this->belongsTo(Subrubro::class, 'idsubrubro');
+        return $this->belongsTo(Rubro::class);
     }
 
     public function nivel()
     {
-        return $this->belongsTo(Nivel::class, 'idnivel');
+        return $this->belongsTo(Nivel::class);
     }
 }

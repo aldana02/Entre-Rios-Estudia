@@ -1,47 +1,53 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.app')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@section('content')
+<div class="login-page-bg">
+    <div class="login-wrapper">
+        <!-- LADO IZQUIERDO -->
+        <div class="login-banner">
+            <img src="{{ asset('images/logoER.png') }}" alt="Logo Entre Ríos" class="login-logo">
+            <h1 class="login-title">Entre <br>Ríos <br>Estudia</h1>
+            <p class="login-desc">
+                Tu portal de acceso a la educación de calidad.<br>
+                Conectá con miles de recursos educativos y mantenete actualizado.
+            </p>
         </div>
+        <!-- FORMULARIO -->
+        <div class="login-form-box">
+            <h2 class="titulo-formulario">Iniciar Sesión</h2>
+            <p class="subtitulo-formulario mb-6">Ingresa a tu cuenta para continuar</p>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <!-- Mensajes -->
+            <x-auth-session-status class="mb-4" :status="session('status')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <div>
+                    <label for="email" class="label-auth">Correo Electrónico</label>
+                    <input id="email" type="email" name="email" required autofocus class="input-auth" value="{{ old('email') }}">
+                    <x-input-error :messages="$errors->get('email')" class="mensaje-error" />
+                </div>
+
+                <div class="mt-4">
+                    <label for="password" class="label-auth">Contraseña</label>
+                    <input id="password" type="password" name="password" required class="input-auth">
+                    <x-input-error :messages="$errors->get('password')" class="mensaje-error" />
+                </div>
+
+                <div class="mt-4 flex items-center">
+                    <input id="remember_me" type="checkbox" name="remember" class="mr-2">
+                    <label for="remember_me" class="text-sm text-gray-600">Recordarme</label>
+                </div>
+
+                <div class="mt-6 flex items-center justify-between">
+                    @if (Route::has('password.request'))
+                        <a href="{{ route('password.request') }}" class="text-sm text-[#032348] hover:underline">¿Olvidaste tu contraseña?</a>
+                    @endif
+                    <button type="submit" class="btn-auth">Iniciar Sesión</button>
+                </div>
+            </form>
         </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+</div>
+@endsection
