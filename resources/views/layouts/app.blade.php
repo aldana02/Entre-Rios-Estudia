@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entre Ríos Estudia</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- si usás Laravel Mix -->
+
     <style>
         * {
             margin: 0;
@@ -365,6 +367,84 @@
         .feature-card:nth-child(3) {
             animation-delay: 0.4s;
         }
+        .instituciones-container {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #f6faff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.instituciones-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.instituciones-title {
+    font-size: 2.5rem;
+    color: #032348;
+    margin-bottom: 10px;
+}
+
+.instituciones-subtitle {
+    font-size: 1.2rem;
+    color: #444;
+}
+
+.instituciones-empty {
+    text-align: center;
+    background: #ffffff;
+    padding: 40px 20px;
+    border: 2px dashed #c3dff6;
+    border-radius: 10px;
+}
+
+.instituciones-alert {
+    font-size: 1.5rem;
+    color: #d9534f;
+    margin-bottom: 10px;
+}
+
+.instituciones-info {
+    color: #555;
+}
+
     </style>
 </head>
+<body>
+
+    <!-- Header con menú -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="{{ asset('images/logoER.png') }}" alt="Logo Entre Ríos" class="logo-img"><br>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="/" class="active">Inicio</a></li>
+                <li><a href="/informacion">Rubro</a></li>
+                <li><a href="/instituciones">Institución</a></li>
+                <li><a href="/cursos">Cursos</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+            </ul>
+            
+            <div class="auth-buttons">
+                <a href="/login" class="btn-login">Iniciar Sesión</a>
+                <a href="/register" class="btn-register">Registrarse</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Aquí va el contenido de cada vista -->
+    <main>
+        @yield('content')
+    </main>
+
+    <!-- Footer (opcional) -->
+    <footer class="footer">
+        <p>&copy; {{ date('Y') }} Entre Ríos Estudia - Todos los derechos reservados.</p>
+    </footer>
+
+</body>
 </html>

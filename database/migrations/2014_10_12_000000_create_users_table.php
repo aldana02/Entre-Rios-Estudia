@@ -17,6 +17,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('telefono')->nullable();
+            $table->string('foto')->nullable();
+            $table->date('fecha_nacimiento')->nullable();
+            $table->integer('tipo_usuario')->default(0); // 0 = admin, 1 = institución
+            $table->boolean('activado')->default(false);
+            $table->integer('rol')->default(0); // por si querés más granularidad
             $table->rememberToken();
             $table->timestamps();
         });
